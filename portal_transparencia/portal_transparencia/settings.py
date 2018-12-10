@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 
 # Scrapy settings for portal_transparencia project
 #
@@ -64,9 +65,15 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'portal_transparencia.pipelines.PortalTransparenciaPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'scrapy.pipelines.files.FilesPipeline': 1,
+#   'portal_transparencia.pipelines.PortalTransparenciaPipeline': 300
+}
+
+# Configure directory path to store downloaded files
+FILES_STORE = os.path.dirname(__file__) + '/files'
+# IMAGES_STORE = 's3://bucket/images'
+# FILES_EXPIRES = 0
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
